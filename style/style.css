@@ -1,0 +1,21 @@
+h2 {
+    background-color: brown;
+}
+
+input[type="password"] {
+    background-color: coral;
+    transition: all 1s;
+}
+
+input[type="password"]:focus {
+    border-radius: 2em;
+
+}
+
+p::first-line {
+    color: blanchedalmond;
+}
+
+a:hover {
+    color: blueviolet;
+}
