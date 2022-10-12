@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="info()">Get car info</button>
+        <button onclick="start()">Start engine</button>
+        <button onclick="drive()">Drive</button>
+        <button onclick="brake()">Brake engine</button>
+        <button onclick="stop()">Stop engine</button>
+    </div>
+
+    <br>
+
+    <div>
+        <button onclick="showName()">Get Bunda</button>
+        <div id="personName"></div>
+    </div>
+
+    <script>
+        var car = {
+            // Properties
+            type: "Fiat",
+            weight: 500,
+            color: "white",
+
+            // Method
+            info: function() {
+                console.log(`Name: ${this.type}, Weight: ${this.weight}, Color: ${this.color}`)
+            },
+
+            start: function() {
+                console.log("Starting engine...")
+            },
+
+            drive: function() {
+                console.log("Driving...")
+            },
+
+            brake: function() {
+                console.log("Braking...")
+            },
+
+            stop: function() {
+                console.log("Stopping engine...")
+            }
+        }
+
+        const info = function() {
+            car.info()
+        }
+
+        const start = function() {
+            car.start()
+        }
+
+        const drive = function() {
+            car.drive()
+        }
+
+        const brake = function() {
+            car.brake()
+        }
+
+        const stop = function() {
+            car.stop()
+        }
+    </script>
+
+    <script>
+        function Person(firstName, lastName) {
+            // Properties
+            this.firstName = firstName
+            this.lastName = lastName
+
+            this.fullName = function() {
+                return `${this.firstName} ${this.lastName}`
+            }
+
+            this.showName = function() {
+                document.write(this.fullName())
+            }
+        }
+
+        person_element = document.getElementById("personName")
+
+        var bunda = new Person("Bunda", "Papih")
+        var papih = new Person("Papih", "Bunda")
+
+        const showName = function() {
+            person_element.innerHTML = bunda.showName()
+        }
+    </script>
+</body>
+</html>

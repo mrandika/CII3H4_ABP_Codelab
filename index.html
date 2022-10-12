@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="sayHello()">Say Hi</button>
+    <button onclick="ask()">??? mamgic</button>
+    <button onclick="askQuestion()">??? quemstion</button>
+    <button onclick="clear()">Clear</button>
+    <div id="announcement">
+
+    </div>
+
+    <script>
+        console.log("GG WEPRET")
+
+        const announcement_element = document.getElementById("announcement")
+
+        const sayHello = function() {
+            alert("Hai")
+            announcement_element.innerHTML = "Hai papih "
+        }
+
+        const ask = function() {
+            var confirm_status = confirm("Google mw g?")
+            announcement_element.innerHTML = "ask() says " + confirm_status 
+
+            if (confirm_status) {
+                window.location = "https://google.com"
+            } else {
+                document.write("Ywd dsni az")
+            }
+        }
+
+        const askQuestion = function() {
+            var answer = prompt("Sp nma km")
+            announcement_element.innerHTML = "Hai " + answer
+        }
+
+        const clear = function() {
+            document.write("Cleared!")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Assert
+        // Log a message and stack trace to console if the firsrt argument is false.
+        console.assert(1 === "1")
+        console.assert(1 == 1) // Wont trace to console, since that return true
+
+        // Count
+        // Output the number of times it has been called with that label
+        console.count(false)
+
+        // Count Reset
+        // ... reset the count?
+        console.countReset(false)
+
+        // Debug
+        // Print to console with debug level
+        console.debug("Wleowleowleo")
+
+        // Dir
+        // Display interactive list of a properties of the specified JS object.
+        console.dir(document.location)
+
+        // Dirxml
+        // Display XML/HTML element representation if possible.
+        console.dirxml(document)
+
+        // Error
+        // Print to console with error level
+        console.error("Uh uh")
+
+        // Info
+        // Print to console with info level
+        console.info("08 kapan kapan kita ke dupan")
+
+        // Log
+        // Print to console with log level
+        console.log("Sudah coba console.log-nya kakak?")
+
+        // Table
+        // Display tabular data
+        console.table(
+            {
+                key: 'A',
+                value: '01'
+            }
+        )
+
+        // Warn
+        // Output warning message
+        console.warn("Afh ykin?")
+
+        // Clear
+        // ... clear the console?
+        var shouldClearConsole = confirm("Clear the console?")
+
+        if (shouldClearConsole) {
+            console.clear()
+        }
+    </script>
+</body>
+</html>

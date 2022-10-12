@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("--- ARRAY ---")
+
+        // Concat
+        // Merging two array
+        const arr1 = ['a', 'n']
+        const arr2 = ['d', 'i', 'k', 'a']
+        const arr_result = arr1.concat(arr2)
+        console.log(arr_result)
+
+        // Every
+        // Tests wheter all elements in array pass the test implemented by the provided function
+        const isAboveTheMinimumValue = (value) => value >= 2
+        const a = [22, 6, 2, 11, 7, 2]
+        console.log(a.every(isAboveTheMinimumValue))
+
+        // Filter 
+        // Filter the array, according to the provided function
+        const isLengthAboveThree = (element) => element.length > 3
+        const b = ['lorem', 'dorem', 'ipsum', 'dolor', 'sit', 'amet']
+        const b_filter = b.filter(isLengthAboveThree)
+        console.log(b_filter)
+
+        // Find
+        // Return first index of searched element
+        const isElementPen = (element) => element == 'pen'
+        const c = ['book', 'pen', 'broom', 'chalk']
+        const value = c.find(isElementPen)
+        console.log(value)
+
+        // Find Index
+        // Return the first index of searched element
+        const isElementBelowThreshold = (value) => value < 50
+        const d = [101, 76, 40, 10, 0]
+        const d_index = d.findIndex(isElementBelowThreshold)
+    </script>
+
+    <script>
+        console.log("--- ARRAY OF OBJECT ---")
+
+        function Person(firstName, lastName, age) {
+            // Properties
+            this.firstName = firstName
+            this.lastName = lastName
+            this.age = age
+
+            this.fullName = function() {
+                return `${this.firstName} ${this.lastName}`
+            }
+
+            this.showName = function() {
+                document.write(this.fullName())
+            }
+        }
+
+        var arr_person_1 = []
+        var arr_person_2 = []
+
+        for (let i = 1; i <= 5; i++) {
+            const p_a = new Person(`Person ${i}`, `${i}`, 10*i)
+            arr_person_1.push(p_a)
+        }
+
+        for (let i = 6; i <= 10; i++) {
+            const p_a = new Person(`Person ${i}`, `${i}`, 10*i)
+            arr_person_2.push(p_a)
+        }
+
+        console.log(arr_person_1)
+        console.log(arr_person_2)
+
+        // Concat
+        const arr_person = arr_person_1.concat(arr_person_2)
+
+        // Every
+        const isAboveLegalAge = (person) => person.age >= 17
+        console.log(arr_person.every(isAboveLegalAge))
+
+        // Filter
+        console.log(arr_person.filter(isAboveLegalAge))
+
+        // Find
+        const searchPersonSeven = (person) => person.firstName == 'Person 7'
+        console.log(arr_person.find(searchPersonSeven))
+
+        // Find Index
+        console.log(arr_person.findIndex(searchPersonSeven))
+    </script>
+</body>
+</html>
