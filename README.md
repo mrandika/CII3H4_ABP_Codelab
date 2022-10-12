@@ -1,4 +1,4 @@
-# Platform-based Application (CII3H4) Codelab
+# Week 3 Codelab - Array and Object
 Muhammad Rizki Andika - 1301204058, IF4401
 
 JavaScript array and object manipulation (and some logical problem aswell). 
