@@ -6,25 +6,17 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Warehouse extends Model
 {
     use HasFactory, HasUuids;
 
     protected $fillable = [
-        'warehouse_id',
-        'brand_id',
         'name',
-        'stock',
-        'price'
+        'address'
     ];
 
-    public function brand()
+    public function products()
     {
-        return $this->belongsTo(Brand::class);
-    }
-
-    public function warehouse()
-    {
-        return $this->belongsTo(Warehouse::class);
+        return $this->hasMany(Product::class);
     }
 }
