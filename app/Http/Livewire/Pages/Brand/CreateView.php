@@ -3,31 +3,15 @@
 namespace App\Http\Livewire\Pages\Brand;
 
 use App\Models\Brand;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Livewire\WithPagination;
 
-class BrandView extends Component
+class CreateView extends Component
 {
-    use WithPagination;
-
-    public $search_value = '';
     public $name;
-
-    protected $paginationTheme = 'bootstrap';
-
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
 
     public function render()
     {
-        $brands = Brand::where('name', 'like', '%'.$this->search_value.'%')->paginate(25);
-
-        return view('livewire.pages.brand.brand-view', [
-            'brands' => $brands
-        ])
+        return view('livewire.pages.brand.create-view')
             ->extends('layouts.dashboard')
             ->section('main');
     }
@@ -39,5 +23,18 @@ class BrandView extends Component
         } else {
             return redirect()->route($route_name);
         }
+    }
+
+    public function store()
+    {
+        $this->validate([
+            'name' => 'required|min:5'
+        ]);
+
+        $brand = new Brand();
+        $brand->name = $this->name;
+        $brand->save();
+
+        $this->redirect_page('brand.show', $brand->id);
     }
 }

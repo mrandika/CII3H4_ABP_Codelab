@@ -1,53 +1,79 @@
-<div>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Brand</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#brandModal">
-                    <span wire:ignore>
-                        <i data-feather="plus"></i>
-                    </span>
-                    Add New
-                </button>
+@section('page')
+    Brand
+@endsection
+
+@extends('layouts.sidebar')
+
+@section('brand-active')
+    active
+@endsection
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1>Brand</h1>
+            <div class="section-header-button">
+                <button class="btn btn-primary" wire:click="redirect_page('brand.create')">New</button>
+            </div>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
+                <div class="breadcrumb-item">Brand</div>
             </div>
         </div>
-    </div>
 
-    <div class="mb-3">
-        <label for="search_brand" class="form-label">Search Brand</label>
-        <input type="text" class="form-control" id="search_brand" placeholder="Brand name" wire:model.debounce.500ms="search_value">
-    </div>
+        <div class="section-body">
+            @if (session('info'))
+                <div class="alert alert-info alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        {{ session('info') }}
+                    </div>
+                </div>
+            @endif
 
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Num. of Products</th>
-        </tr>
-        </thead>
-        <tbody>
-        @forelse($brands as $brand)
-            <tr data-bs-toggle="modal" data-bs-target="#showBrandModal" wire:click="show('{{ $brand->id }}')">
-                <th scope="row">{{ $brand->name }}</th>
-                <td>{{ $brand->products->count() }}</td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="2">No brand available.</td>
-            </tr>
-        @endforelse
-        </tbody>
-    </table>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Registered Brands</h4>
+                    <div class="card-header-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" wire:model.debounce.500ms="search_value">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Num. of Products</th>
+                                <th>Action</th>
+                            </tr>
+                            @forelse($brands as $brand)
+                                <tr>
+                                    <th scope="row">{{ $brand->name }}</th>
+                                    <td>{{ $brand->products->count() }}</td>
+                                    <td><a href="{{ route('brand.show', $brand->id) }}" class="btn btn-secondary">Detail</a></td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3">No brand available.</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-    {{ $brands->links() }}
-
-    @include('livewire.pages.brand.create')
-    @include('livewire.pages.brand.show')
-
-    <script>
-        window.addEventListener('close-modal', event => {
-            $('#brandModal').modal('hide');
-            $('#showBrandModal').modal('hide');
-        })
-    </script>
+                <div class="card-footer text-right">
+                    {{ $brands->links() }}
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

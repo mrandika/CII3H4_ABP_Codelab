@@ -1,59 +1,85 @@
-<div>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Product</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#productModal" wire:click="resetFields">
-                    <span wire:ignore>
-                        <i data-feather="plus"></i>
-                    </span>
-                    Add New
-                </button>
+@section('page')
+    Product
+@endsection
+
+@extends('layouts.sidebar')
+
+@section('product-active')
+    active
+@endsection
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1>Product</h1>
+            <div class="section-header-button">
+                <button class="btn btn-primary" wire:click="redirect_page('product.create')">New</button>
+            </div>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
+                <div class="breadcrumb-item">Product</div>
             </div>
         </div>
-    </div>
 
-    <div class="mb-3">
-        <label for="search_product" class="form-label">Search Product</label>
-        <input type="text" class="form-control" id="search_product" placeholder="Product name" wire:model.debounce.500ms="search_value">
-    </div>
+        <div class="section-body">
+            @if (session('info'))
+                <div class="alert alert-info alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        {{ session('info') }}
+                    </div>
+                </div>
+            @endif
 
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Price</th>
-            <th scope="col">Warehouse</th>
-            <th scope="col">Brand</th>
-        </tr>
-        </thead>
-        <tbody>
-        @forelse($products as $product)
-            <tr data-bs-toggle="modal" data-bs-target="#showProductModal" wire:click="show('{{ $product->id }}')">
-                <th scope="row">{{ $product->name }}</th>
-                <td>{{ $product->stock }}</td>
-                <td>{{ $product->price }}</td>
-                <td>{{ $product->warehouse->name }}</td>
-                <td>{{ $product->brand->name }}</td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="5">No product available.</td>
-            </tr>
-        @endforelse
-        </tbody>
-    </table>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Registered Products</h4>
+                    <div class="card-header-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" wire:model.debounce.500ms="search_value">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Stock</th>
+                                <th>Price</th>
+                                <th>Warehouse</th>
+                                <th>Brand</th>
+                                <th>Action</th>
+                            </tr>
+                            @forelse($products as $product)
+                                <tr>
+                                    <th scope="row">{{ $product->name }}</th>
+                                    <td>{{ $product->stock }}</td>
+                                    <td>{{ $product->price }}</td>
+                                    <td>{{ $product->warehouse->name }}</td>
+                                    <td>{{ $product->brand->name }}</td>
+                                    <td><a href="{{ route('product.show', $product->id) }}" class="btn btn-secondary">Detail</a></td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6">No product available.</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-    {{ $products->links() }}
-
-    @include('livewire.pages.product.create')
-    @include('livewire.pages.product.show')
-
-    <script>
-        window.addEventListener('close-modal', event => {
-            $('#productModal').modal('hide');
-            $('#showProductModal').modal('hide');
-        })
-    </script>
+                <div class="card-footer text-right">
+                    {{ $products->links() }}
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

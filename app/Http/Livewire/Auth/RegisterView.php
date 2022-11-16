@@ -3,9 +3,6 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Models\User;
-use App\Models\UserData;
-use App\Models\UserRole;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
