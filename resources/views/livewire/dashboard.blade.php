@@ -1,99 +1,176 @@
-<div>
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">BarangSiapa</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-{{--        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">--}}
-{{--        <div class="navbar-nav">--}}
-{{--            <div class="nav-item text-nowrap">--}}
-{{--                <a class="nav-link px-3" href="#">Sign out</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-    </header>
-
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3 sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link @if($page == 'Warehouse') active @endif" wire:click="change_page('warehouse')" href="#">
-                                <span wire:ignore class="align-text-bottom">
-                                    <i data-feather="home"></i>
-                                </span>
-                                Warehouse
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if($page == 'Brand') active @endif" wire:click="change_page('brand')" href="#">
-                                <span wire:ignore class="align-text-bottom">
-                                    <i data-feather="book"></i>
-                                </span>
-                                Brand
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if($page == 'Product') active @endif" wire:click="change_page('product')" href="#">
-                                <span wire:ignore class="align-text-bottom">
-                                    <i data-feather="package"></i>
-                                </span>
-                                Product
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-                        <span>Point of Sale</span>
-                        <a class="link-secondary" href="#" wire:click="change_page('order-sales')" aria-label="Sale Tab">
-                            <span wire:ignore class="align-text-bottom">
-                                    <i data-feather="plus-circle"></i>
-                            </span>
+<div class="main-wrapper">
+    <div class="navbar-bg"></div>
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+            <ul class="navbar-nav mr-3">
+                <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+            </ul>
+            <div class="search-element">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                <div class="search-backdrop"></div>
+                <div class="search-result">
+                    <div class="search-header">
+                        Histories
+                    </div>
+                    <div class="search-item">
+                        <a href="#">How to hack NASA using CSS</a>
+                        <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                    </div>
+                    <div class="search-item">
+                        <a href="#">Kodinger.com</a>
+                        <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                    </div>
+                    <div class="search-item">
+                        <a href="#">#Stisla</a>
+                        <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                    </div>
+                    <div class="search-header">
+                        Result
+                    </div>
+                    <div class="search-item">
+                        <a href="#">
+                            <img class="mr-3 rounded" width="30" src="../assets/img/products/product-3-50.png" alt="product">
+                            oPhone S9 Limited Edition
                         </a>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link @if($page == 'Orders' || $page == 'Order-Sale') active @endif" wire:click="change_page('order')" href="#">
-                                <span wire:ignore class="align-text-bottom">
-                                    <i data-feather="file-text"></i>
-                                </span>
-                                Order
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if($page == 'Customers') active @endif" wire:click="change_page('customers')" href="#">
-                                <span wire:ignore class="align-text-bottom">
-                                    <i data-feather="users"></i>
-                                </span>
-                                Customer
-                            </a>
-                        </li>
-                    </ul>
+                    </div>
+                    <div class="search-item">
+                        <a href="#">
+                            <img class="mr-3 rounded" width="30" src="../assets/img/products/product-2-50.png" alt="product">
+                            Drone X2 New Gen-7
+                        </a>
+                    </div>
+                    <div class="search-item">
+                        <a href="#">
+                            <img class="mr-3 rounded" width="30" src="../assets/img/products/product-1-50.png" alt="product">
+                            Headphone Blitz
+                        </a>
+                    </div>
+                    <div class="search-header">
+                        Projects
+                    </div>
+                    <div class="search-item">
+                        <a href="#">
+                            <div class="search-icon bg-danger text-white mr-3">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            Stisla Admin Template
+                        </a>
+                    </div>
+                    <div class="search-item">
+                        <a href="#">
+                            <div class="search-icon bg-primary text-white mr-3">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            Create a new Homepage Design
+                        </a>
+                    </div>
                 </div>
-            </nav>
+            </div>
+        </form>
+        <ul class="navbar-nav navbar-right">
+            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+                <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                    <div class="dropdown-header">Messages
+                        <div class="float-right">
+                            <a href="#">Mark All As Read</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-list-content dropdown-list-message">
+                        <a href="#" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-avatar">
+                                <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle">
+                                <div class="is-online"></div>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Kusnaedi</b>
+                                <p>Hello, Bro!</p>
+                                <div class="time">10 Hours Ago</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+                <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                    <div class="dropdown-header">Notifications
+                        <div class="float-right">
+                            <a href="#">Mark All As Read</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-list-content dropdown-list-icons">
+                        <a href="#" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-icon bg-primary text-white">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                Template update is available now!
+                                <div class="time text-primary">2 Min Ago</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                    <img alt="image" src="{{ asset('image/avatar-1.png') }}" class="rounded-circle mr-1">
+                    <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->fullname() }}</div></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-title">Hi</div>
+                    <a href="features-profile.html" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a wire:click="logout" href="#" class="dropdown-item has-icon text-danger">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                @switch($page)
-                    @case('Warehouse')
-                        @livewire('pages.warehouse.warehouse-view')
-                        @break
-                    @case('Brand')
-                        @livewire('pages.brand.brand-view')
-                        @break
-                    @case('Product')
-                        @livewire('pages.product.product-view')
-                        @break
-                    @case('Orders')
-                        @livewire('pages.order.order-view')
-                        @break
-                    @case('Order-Sale')
-                        @livewire('pages.order.sales-view')
-                        @break
-                    @case('Customers')
-                        @livewire('pages.customer.customer-view')
-                        @break
-                @endswitch
-            </main>
+    <div>
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="index.html">Keeper</a>
+                </div>
+                <div class="sidebar-brand sidebar-brand-sm">
+                    <a href="index.html">KEEP</a>
+                </div>
+                <div class="main-sidebar">
+                    <aside id="sidebar-wrapper">
+                        <div class="sidebar-brand">
+                            <a href="index.html">Keeper</a>
+                        </div>
+                        <div class="sidebar-brand sidebar-brand-sm">
+                            <a href="index.html">KEEP</a>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li class="menu-header">Title</li>
+                            <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+                        </ul>
+                    </aside>
+                </div>
+            </aside>
         </div>
+
+        <!-- Main Content -->
+        @yield('main')
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-left">
+            Copyright &copy; Keeper {{ date('Y') }} <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+        </div>
+        <div class="footer-right">
+            2.3.0
+        </div>
+    </footer>
 </div>
