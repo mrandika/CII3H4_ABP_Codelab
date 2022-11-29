@@ -16,10 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => 'v1'], function() {
-    Route::group(['prefix' => 'warehouse'], function() {
-        Route::controller(WarehouseController::class)->group(function () {
-            Route::get('', 'index')->name('warehouse.index');
-            Route::post('store', 'store')->name('warehouse.store');
+    Route::post('login', [\App\Http\Controllers\Api\Auth\LoginController::class, 'login']);
+
+    Route::group(['middleware' => 'auth:sanctum'], function() {
+        Route::get('user', [\App\Http\Controllers\Api\Auth\AccountController::class, 'account']);
+
+        Route::group(['prefix' => 'warehouse'], function() {
+            Route::controller(WarehouseController::class)->group(function () {
+                Route::get('', 'index')->name('api.warehouse.index');
+                Route::post('store', 'store')->name('api.warehouse.store');
+                Route::get('{id}', 'show')->name('api.warehouse.show');
+                Route::put('update/{id}', 'update')->name('api.warehouse.update');
+                Route::delete('destroy/{id}', 'destroy')->name('api.warehouse.destroy');
+            });
         });
     });
 });

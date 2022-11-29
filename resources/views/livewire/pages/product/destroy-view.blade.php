@@ -14,10 +14,10 @@
             <div class="section-header-back">
                 <a href="{{ route('product.show', $product_id) }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Confirm Warehouse Deletion</h1>
+            <h1>Confirm Product Deletion</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="{{ route('product.index') }}">product</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{ route('product.index') }}">Product</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('product.show', $product_id) }}">{{ $product->name }}</a></div>
                 <div class="breadcrumb-item">Delete</div>
             </div>

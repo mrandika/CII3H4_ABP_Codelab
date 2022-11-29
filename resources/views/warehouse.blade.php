@@ -1,10 +1,12 @@
+@extends('layouts.dashboard')
+
 @section('page')
-    Warehouse
+    Warehouse (AJAX)
 @endsection
 
 @extends('layouts.sidebar')
 
-@section('warehouse-active')
+@section('warehouse-ajax-active')
     active
 @endsection
 
@@ -38,7 +40,7 @@
                     <h4>Registered Warehouses</h4>
                     <div class="card-header-form">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" wire:model.debounce.500ms="search_value">
+                            <input type="text" class="form-control" placeholder="Search" id="search_value">
                             <div class="input-group-btn">
                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                             </div>
@@ -48,34 +50,66 @@
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-striped">
-                            <tbody>
+                            <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Address</th>
                                 <th>Num. of Products</th>
                                 <th>Action</th>
                             </tr>
-                            @forelse($warehouses as $warehouse)
-                                <tr>
-                                    <th scope="row">{{ $warehouse->name }}</th>
-                                    <td>{{ $warehouse->address }}</td>
-                                    <td>{{ $warehouse->products->count() }}</td>
-                                    <td><a href="{{ route('warehouse.show', $warehouse->id) }}" class="btn btn-secondary">Detail</a></td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5">No warehouse available.</td>
-                                </tr>
-                            @endforelse
+                            </thead>
+                            <tbody id="warehouse_list">
                             </tbody>
                         </table>
                     </div>
-                </div>
-
-                <div class="card-footer text-right">
-                    {{ $warehouses->links() }}
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+@section('js')
+    <script>
+        let warehouse_row = function (name, address, products_count, show_url) {
+            return `
+            <tr>
+                <th scope="row">${name}</th>
+                <td>${address}</td>
+                <td>${products_count}</td>
+                <td><a href="${show_url}" class="btn btn-secondary">Detail</a></td>
+            </tr>
+            `
+        }
+
+        let get_warehouse = function (key = '') {
+            let wh_list = $('#warehouse_list');
+            wh_list.empty();
+
+            $.ajax({
+                url: key !== '' ? "{{ route('api.warehouse.index') }}" + `?key=${key}` : "{{ route('api.warehouse.index') }}",
+                headers: {
+                    'Authorization':'Bearer 2|gDoZskbLgEMmiJyZbkxhLz2T5gHX0YcgGVHlIYYW',
+                },
+                method: "GET",
+                success: function (result) {
+                    result["data"].forEach(function (warehouse) {
+                        wh_list.append(warehouse_row(warehouse.name, warehouse.address, warehouse.products.length, `show/${warehouse.id}`))
+                    })
+                },
+                error: function (data) {
+                    console.error(data);
+                }
+            })
+        }
+
+        $(document).on('turbolinks:load', function () {
+            get_warehouse()
+
+            let search_value = $('#search_value');
+
+            $(search_value).on('change', function () {
+                get_warehouse(search_value.val())
+            });
+        });
+    </script>
+@endsection

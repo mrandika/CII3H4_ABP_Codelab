@@ -16,7 +16,7 @@ class ShowView extends Component
 
     public function render()
     {
-        $warehouse = Warehouse::findOrFail($this->warehouse_id);
+        $warehouse = Warehouse::with('products')->findOrFail($this->warehouse_id);
 
         return view('livewire.pages.warehouse.show-view', ['warehouse' => $warehouse])
             ->extends('layouts.dashboard')

@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Pages\Warehouse;
 
 use App\Models\Warehouse;
 use Livewire\Component;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
 
 class WarehouseView extends Component

@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Pages\Warehouse;
 
 use App\Models\Warehouse;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class DestroyView extends Component

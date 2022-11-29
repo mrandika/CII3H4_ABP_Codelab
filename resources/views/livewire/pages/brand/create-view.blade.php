@@ -14,9 +14,9 @@
             <div class="section-header-back">
                 <a href="{{ route('brand.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>New Warehouse</h1>
+            <h1>New Brand</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                 <div class="breadcrumb-item active"><a href="{{ route('brand.index') }}">Brand</a></div>
                 <div class="breadcrumb-item">New Data</div>
             </div>

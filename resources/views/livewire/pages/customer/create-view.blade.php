@@ -1,10 +1,10 @@
 @section('page')
-    New Warehouse
+    Customer
 @endsection
 
 @extends('layouts.sidebar')
 
-@section('warehouse-active')
+@section('customer-active')
     active
 @endsection
 
@@ -12,12 +12,12 @@
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
-                <a href="{{ route('warehouse.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+                <a href="{{ route('customer.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>New Warehouse</h1>
+            <h1>New Customer</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Warehouse</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('customer.index') }}">Customer</a></div>
                 <div class="breadcrumb-item">New Data</div>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <form wire:submit.prevent="store">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Warehouse Data</h4>
+                        <h4>Customer Data</h4>
                     </div>
 
                     <div class="card-body">
@@ -43,9 +43,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea class="form-control @error('address') is-invalid @enderror" id="address" rows="3" wire:model="address" required></textarea>
-                            <small id="address-helpblock" class="form-text text-muted">
+                            <label for="name">Address</label>
+                            <input type="text" id="name" class="form-control @error('address') is-invalid @enderror" aria-describedby="name-helpblock" wire:model="address" required>
+                            <small id="name-helpblock" class="form-text text-muted">
                                 Required
                             </small>
 
@@ -53,12 +53,23 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>
 
-                    <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <div class="form-group">
+                            <label for="name">Phone Number</label>
+                            <input type="number" id="name" class="form-control @error('phone_number') is-invalid @enderror" aria-describedby="name-helpblock" wire:model="phone_number" required>
+                            <small id="name-helpblock" class="form-text text-muted">
+                                Required, numeric, min: 8 and max: 15
+                            </small>
+
+                            @error('phone_number')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </div>
-                </div>
             </form>
         </div>
     </section>

@@ -16,7 +16,7 @@
             </div>
             <h1>Brand Information</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('brand.index') }}">Brand</a></div>
                 <div class="breadcrumb-item">{{ $brand->name }}</div>
             </div>

@@ -14,9 +14,9 @@
             <div class="section-header-back">
                 <a href="{{ route('product.show', $product_id) }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>New Product</h1>
+            <h1>Edit Product</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                 <div class="breadcrumb-item active"><a href="{{ route('product.index') }}">Product</a></div>
                 <div class="breadcrumb-item active"><a href="{{ route('product.show', $product_id) }}">{{ $product->name }}</a></div>
                 <div class="breadcrumb-item">Update</div>

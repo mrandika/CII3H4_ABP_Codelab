@@ -16,7 +16,7 @@
             </div>
             <h1>New Product</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                 <div class="breadcrumb-item active"><a href="{{ route('product.index') }}">Product</a></div>
                 <div class="breadcrumb-item">New Data</div>
             </div>

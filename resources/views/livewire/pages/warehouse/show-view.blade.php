@@ -16,7 +16,7 @@
             </div>
             <h1>Warehouse Information</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('warehouse.index') }}">Dashboard</a></div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('warehouse.index') }}">Warehouse</a></div>
                 <div class="breadcrumb-item">{{ $warehouse->name }}</div>
             </div>
@@ -90,7 +90,7 @@
                                         <p class="lead">
                                             This warehouse currently have no products. Use button below to create a new products.
                                         </p>
-{{--                                        <a href="{{ route('item.create') }}" class="btn btn-primary mt-4">'Buat Baru'</a>--}}
+                                        <a href="{{ route('product.create') }}" class="btn btn-primary mt-4">Create New</a>
                                     </div>
                                 @endforelse
                             </ul>

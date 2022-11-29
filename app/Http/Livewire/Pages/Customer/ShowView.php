@@ -3,18 +3,22 @@
 namespace App\Http\Livewire\Pages\Customer;
 
 use App\Models\Customer;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
-class CustomerView extends Component
+class ShowView extends Component
 {
-    public $search_value = '';
+    public $customer_id;
+
+    public function mount($customer_id)
+    {
+        $this->customer_id = $customer_id;
+    }
 
     public function render()
     {
-        $customers = Customer::where('name', 'like', '%'.$this->search_value.'%')->paginate(25);
+        $customer = Customer::findOrFail($this->customer_id);
 
-        return view('livewire.pages.customer.customer-view', ['customers' => $customers])
+        return view('livewire.pages.customer.show-view', ['customer' => $customer])
             ->extends('layouts.dashboard')
             ->section('main');
     }
